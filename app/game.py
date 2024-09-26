@@ -1,3 +1,5 @@
+from app.utils import Color as color
+
 class Game():
 
     _example_solution = [[1,1,0,1,1],
@@ -63,8 +65,11 @@ class Game():
             x = int(mark[1])-1 if int(mark[1]) > 0 else None
             self.input_rows[y][x] = 0 if self.input_rows[y][x] else 1
             self.input_columns = self.rows_to_columns(self.input_rows)
+        except KeyboardInterrupt:
+            exit('game quit')
         except:
-            pass
+            print(f'{color.red}invalid input{color.end}')
+            return None, None
         return x, y
 
     def check_errors(self, line, solution_line):
@@ -73,18 +78,16 @@ class Game():
                 return True
         return False
     
+    @property
     def won(self):
         return self.input_rows == self.solution_rows
 
     def draw_board(self):
-        RED = '\033[91m'
-        END = '\033[0m'
-
         leftpad = '    '
         rowpadding = ' '.join([' ' for box in self.row_puzzle[0]])
 
         column_numbers = ''.join([
-            f' {RED if self.check_errors(self.input_columns[i], self.solution_columns[i]) else ''}{i+1}{END} ' 
+            f' {color.red if self.check_errors(self.input_columns[i], self.solution_columns[i]) else ''}{i+1}{color.end} ' 
                 for i, column in enumerate(self.columns_puzzle)])
 
         border_left = '_'.join(['_' for box in self.row_puzzle[0]])
@@ -104,8 +107,8 @@ class Game():
 
         for i, row in enumerate(self.input_rows):
             row_number = i+1
-            errors = RED if self.check_errors(row, self.solution_rows[i]) else ''
+            errors = color.red if self.check_errors(row, self.solution_rows[i]) else ''
             puzzle = ' '.join(str(box) for box in self.row_puzzle[i])
             boxes = ''.join(['[O]' if box else '[ ]' for box in row])
-            row_board = f'{errors}{row_number}{END}  |{puzzle}{boxes}'
+            row_board = f'{errors}{row_number}{color.end}  |{puzzle}{boxes}'
             print(row_board)
