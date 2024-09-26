@@ -1,11 +1,12 @@
-import app.game as game
+from app.game import Game
 
+solution = [[1,0,1],
+            [0,1,0],
+            [1,0,1]]
+
+game = Game(solution=solution)
 game.draw_board()
-while game.input_rows != game.solution_rows:
+while not game.won():
     x, y = game.get_mark()
-    try:
-        game.input_rows[y][x] = 0 if game.input_rows[y][x] else 1
-    except:
-        pass
     game.draw_board()
 print('You Win!')
