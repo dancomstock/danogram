@@ -1,12 +1,14 @@
 from app.game import Game
+import random
 
-solution = [[1,0,1],
-            [0,1,0],
-            [1,0,1]]
+print(random.randint(3, 9))
 
-game = Game(solution=solution)
-game.draw_board()
-while not game.won:
-    x, y = game.get_mark()
-    game.draw_board()
-print('You Win!')
+
+# solution = [[1,0,1],
+#             [0,1,0],
+#             [1,0,1]]
+
+
+game = Game.new_random_game()
+# game = Game(solution=solution)
+game.play()
