@@ -5,6 +5,7 @@ from app.utils import load as load
 from app.utils import save as save
 from app.utils import load_progress as load_progress
 from app.utils import save_progress as save_progress
+import app.text as text
 
 # solution = [[1,0,1],
 #             [0,1,0],
@@ -12,6 +13,7 @@ from app.utils import save_progress as save_progress
 
 os.system('')
 
+print(text.danogram)
 selection = None
 while True:
     try:
