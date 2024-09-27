@@ -6,6 +6,7 @@ from app.utils import save as save
 from app.utils import load_progress as load_progress
 from app.utils import save_progress as save_progress
 import app.text as text
+import sys
 
 # solution = [[1,0,1],
 #             [0,1,0],
@@ -35,8 +36,7 @@ while True:
             game = Game.new_blank_game()
             game.play() if game else ''
         elif selection == 'exit' or selection == '5':
-            exit('game quit')
-
+            sys.exit('game quit')
         else:
             print('invalid')
     except KeyboardInterrupt:
