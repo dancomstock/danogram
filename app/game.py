@@ -107,7 +107,7 @@ class Game:
 
     def get_mark(self):
         try:
-            mark_txt = input('input row,column\n')
+            mark_txt = input('input row,column to mark or unmark\ninput save to save progress\n')
             if mark_txt == 'save':
                 print('save below text:\n')
                 if self.mode == 'edit':
