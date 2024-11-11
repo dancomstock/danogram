@@ -29,7 +29,7 @@ class Game:
             except:
                 print('invalid input')
                 return None
-        solution = [[random.randint(0, 1) for i in range(y)] for i in range(x)]
+        solution = [[random.randint(0, 1) for i in range(x)] for i in range(y)]
         return Game(solution=solution)
     
     def new_blank_game(x=None,y=None):
@@ -42,7 +42,7 @@ class Game:
             except:
                 print('invalid input')
                 return None
-        solution = [[0 for i in range(y)] for i in range(x)]
+        solution = [[0 for i in range(x)] for i in range(y)]
         return Game(solution=solution, mode='edit')
     
     def load_edit_game(solution):
